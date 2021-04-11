@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/officeHome.css">
+    <title>Office</title>
+</head>
+<body>
+   
+    <div class="agent_data">
+        <table>
+            <caption>Agent Information</caption>
+            <thead>
+              <tr>
+                <th scope="col">Agent ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% for(let agent of agentdata){ %> 
+              <tr>
+                <th scope="row"><%= agent.a_id %></th>
+                <td><%= agent.firstname %> <%= agent.lastname %></td>
+                <td><a href="/office/profile/<%= agent.a_id %>">View Profile</a></td>
+              </tr>
+              <% } %>
+             
+            </tbody>
+          </table>
+    </div>
+<hr/>
+</body>
+</html>
+
