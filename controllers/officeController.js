@@ -54,8 +54,14 @@ exports.getOfficeHome = (req,res) => {
 }
 
 exports.getAgentProfile = (req,res) => {
+  if(!req.session.officeId){
+    res.redirect('/office/login');
+    return;
+  }
     const agentId = req.params.agentId;
-    const query = `select * from agent where a_id = '${agentId}'; select * from property where a_id = '${agentId}'`
+    const query = `select * from agent where a_id = '${agentId}'; select * from property where a_id = '${agentId}'; select count(a_id) total_count from property where a_id = '${agentId}'; 
+    select * from property where a_id = '${agentId}' and current_status='sold';  select count(a_id) total_count from property where a_id = ${agentId} and current_status='sold';  
+    select * from property where a_id = '${agentId}' and current_status='rented'; select count(a_id) total_count from property where a_id = ${agentId} and current_status='rented';`
     console.log(agentId);
     if(!req.session.officeId){
         res.redirect('/office/login');
@@ -66,14 +72,94 @@ exports.getAgentProfile = (req,res) => {
         if(!err){
         const agentProfile = rows[0];
         const propertyDetails = rows[1]
+        const countProperty = rows[2]
+        const sold = rows[3]
+        const csold = rows[4]
+        const rented = rows[5]
+        const crented = rows[6]
         console.log(rows)
         res.render('office/profile',{
             profile : agentProfile,
-            pdetails : propertyDetails
+            pdetails : propertyDetails,
+            cproperty : countProperty,
+            solds : sold,
+            csold : csold,
+            rented : rented,
+            crented : crented
+
         });
         }else{
             cosnole.log(err);
-        }
-        
+        } 
     })
+}
+
+exports.getAddAgent = (req, res) => {
+  if(!req.session.officeId){
+    res.redirect('/office/login');
+    return;
+  }
+  res.render('office/add_agent')
+
+}
+
+exports.postAddAgent = (req, res) => {
+  if(!req.session.officeId){
+    res.redirect('/office/login');
+    return;
+  }
+  let { firstname,lastname,contact,username,password } = req.body;
+  contact = +contact;
+
+  const id = Math.floor(Math.random()*200 + 11);
+  console.log(req.body,id);
+  const query = `insert into agent (a_id , firstname , lastname , is_admin , contact ) values
+  ( '${id}' , '${firstname}' , '${lastname}' , 0 , '${contact}');  
+   insert into login (username , pass_word , a_id , is_admin ) values
+  ('${username}','${password}','${id}', 0);  `;
+  connection.query(query,(err,rows,field) => {
+    if(!err){
+      res.redirect('/office')
+    }else{
+      console.log(err);
+    }
+    
+  })
+}
+
+exports.getAddProperty = (req, res) => {
+
+  if(!req.session.officeId){
+    res.redirect('/office/login');
+    return;
+  }
+  
+  res.render('office/add_property');
+}
+
+exports.postAddProperty = (req, res) => {
+  if(!req.session.officeId){
+    res.redirect('/office/login')
+    return;
+  }
+  const id = Math.floor(Math.random()*90000 + 100000);
+  let { area,bhk,price,asked_price,city,locality,type,status,owner_id,agent_id } = req.body;
+  area = +area;
+  bhk = +bhk;price = +price;
+  asked_price = +asked_price;
+  owner_id = +owner_id;
+  agent_id = +agent_id;
+
+  const query = `insert into property (p_id , area , bhk ,asked_price , locality ,city , rent_sell ,current_status , owner_id , a_id , price ) values
+  ( '${id}' , '${area}' , '${bhk}' , '${asked_price}' , '${locality}' ,'${city}' ,'${type}' , '${status}' ,'${owner_id}' ,'${agent_id}' ,'${price}');`
+
+  connection.query(query,(err,rows,field)=> {
+    if(!err){
+      res.redirect('/office');
+    }else{
+      console.log(err);
+    }
+  })
+  console.log(req.body);
+
 }

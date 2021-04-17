@@ -37,15 +37,15 @@
         <div class="card_body">
           <ul class="social">
             <li class="twitter">
-               <button onclick="toggleProperties()"><h3>14.4K</h3></button>
+               <button onclick="toggleProperties()"><h3><%= cproperty[0].total_count %></h3></button>
               <p>Total Properties</p>
             </li>   
             <li class="facebook">
-              <button onclick="toggleSold()"><h3>239.2K</h3> </button>
+              <button onclick="toggleSold()"><h3><%= csold[0].total_count %></h3> </button>
               <p>Properties Sold</p>
             </li>
             <li class="instagram">
-               <button onclick="toggleRented()"><h3>404K</h3></button>
+               <button onclick="toggleRented()"><h3><%= crented[0].total_count %></h3></button>
               <p>Properties Rented</p>
             </li>
         </div>
@@ -91,10 +91,10 @@
                 <td><%= property.bhk %></td>
                 <td> RS <%= property.price %></td>
                 <td>RS <%=property.asked_price  %> </td>
-                <td><%= property.locality %></td>
-                <td><%= property.city %></td>
-                <td><%= property.current_status %></td>
-                <td><%= property.a_id %></td>
+                <td><%= property.locality %>  </td>
+                <td><%= property.city %>  </td>
+                <td><%= property.current_status %>  </td>
+                <td><%= property.a_id %>  </td>
                 <td><%= property.owner_id %></td>
               </tr>
               <% } %> 
@@ -132,18 +132,20 @@
         <div class="tbl-content">
           <table cellpadding="0" cellspacing="0" border="0">
             <tbody>
-              <tr>
-                <td>225</td>
-                <td>3 </td>
-                <td>45</td>
-                <td>RS557</td>
-                <td>Rs45</td>
-                <td>ss</td>
-                <td>R45</td>
-                <td>Rs45</td>
-                <td>Rs45</td>
-                <td>sold</td>
-              </tr>
+                <% for(let sold of solds) { %> 
+                <tr>
+                  <td> <%= sold.p_id %></td>
+                  <td><%= sold.area %></td>
+                  <td><%= sold.bhk %></td>
+                  <td> RS <%= sold.price %></td>
+                  <td>RS <%=sold.asked_price  %> </td>
+                  <td><%= sold.locality %>  </td>
+                  <td><%= sold.city %>  </td>
+                  <td><%= sold.current_status %>  </td>
+                  <td><%= sold.a_id %>  </td>
+                  <td><%= sold.owner_id %></td>
+                </tr>
+                <% } %>
               
             </tbody>
           </table>
@@ -178,19 +180,20 @@
         <div class="tbl-content">
           <table cellpadding="0" cellspacing="0" border="0">
             <tbody>
-              <tr>
-                <td>225</td>
-                <td>3 </td>
-                <td>45</td>
-                <td>RS557</td>
-                <td>Rs45</td>
-                <td>ss</td>
-                <td>R45</td>
-                <td>Rs45</td>
-                <td>Rs45</td>
-                <td>Rs45</td>
-              </tr>
-              
+              <% for(let rent of rented) { %> 
+                <tr>
+                  <td> <%= rent.p_id %></td>
+                  <td><%= rent.area %></td>
+                  <td><%= rent.bhk %></td>
+                  <td> RS <%= rent.price %></td>
+                  <td>RS <%=rent.asked_price  %> </td>
+                  <td><%= rent.locality %>  </td>
+                  <td><%= rent.city %>  </td>
+                  <td><%= rent.current_status %>  </td>
+                  <td><%= rent.a_id %>  </td>
+                  <td><%= rent.owner_id %></td>
+                </tr>
+                <% } %>
             </tbody>
           </table>
         </div>  
