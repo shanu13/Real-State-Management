@@ -18,4 +18,10 @@ router.get('/add_property', officeContoller.getAddProperty);
 
 router.post('/add_property', officeContoller.postAddProperty);
 
+router.get('/total_properties', officeContoller.getTotalProperties);
+
+router.get('/total_sold_properties', officeContoller.getTotalSoldProperties);
+
+router.get('/total_rented_properties', officeContoller.getTotalRentedProperties);
+
 module.exports = router;

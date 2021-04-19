@@ -163,3 +163,27 @@ exports.postAddProperty = (req, res) => {
   console.log(req.body);
 
 }
+
+exports.getTotalProperties = (req, res) => {
+  if(!req.session.officeId){
+    res.redirect('/office/login');
+    return
+  }
+  res.render('office/total_properties')
+}
+  
+exports.getTotalSoldProperties = (req, res) => {
+  if(!req.session.officeId){
+    res.redirect('/office/login');
+    return
+  }
+  res.render('office/sold_properties')
+}
+
+exports.getTotalRentedProperties = (req, res) => {
+  if(!req.session.officeId){
+    res.redirect('/office/login');
+    return
+  }
+  res.render('office/rented_properties')
+}

@@ -104,11 +104,12 @@ h1{
     margin-bottom: 15px;
   }
   table{
-      margin : 0 auto;
+      margin : 0 auto;   
     width:60%;
     table-layout: fixed;
      background: -webkit-linear-gradient(left, #25c481, #25b7c4);
     background: linear-gradient(to right, #25c481, #25b7c4);
+   
   }
   .tbl-header{
     background-color: rgba(255,255,255,0.3);
@@ -118,10 +119,11 @@ h1{
     overflow-x:auto;
     margin-top: 0px;
     border: 1px solid rgba(255,255,255,0.3);
+    margin-bottom: 10px;
   }
   th{
     padding: 20px 15px;
-    text-align: left;
+    text-align: center;
     font-weight: 500;
     font-size: 16px;
     color: #fff;

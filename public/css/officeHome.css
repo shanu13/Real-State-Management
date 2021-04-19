@@ -69,6 +69,7 @@ th, td {
   display : flex;
   margin: 20px 0;
   justify-content:space-evenly;
+  padding: 6em;
 }
 
 .btn {
@@ -148,6 +149,76 @@ th, td {
     transform: translate(-50%, -75%) rotate(360deg);
  }
 }
+
+
+.total{
+  margin: 80px 10px;
+  display : flex;
+  justify-content: center;
+}
+
+.total a button{
+  width: 400px;
+  font-size: 22px;
+  font-weight: 300;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 300px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  /* moz-transition: all .4s ease-in-out; */
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  padding : auto;
+  font-family: ubuntu;
+ 
+}
+.span{
+  font-weight: 900;
+  font-size: 28px;
+}
+a{
+  text-decoration:none;
+ 
+}
+
+.total a button:hover{
+  background-position: 100% 0;
+  /* moz-transition: all .4s ease-in-out; */
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.total a button:focus{
+  outline: none;;
+}
+
+.total_properties{
+  background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+  box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+  flex : 1;
+}
+
+.sold_properties{
+  background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
+  box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+  flex : 1;
+}
+
+.rented_properties{
+  background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+/* .total_properties:hover {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  background: rgb(63, 62, 62);
+} */
 
 
 
