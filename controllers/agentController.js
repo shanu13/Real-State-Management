@@ -8,17 +8,17 @@ exports.postLogin = (req, res) => {
   // get params ;
   const username = req.body.username;
   const password = req.body.password;
-  console.log(username, password);
+  // console.log(username, password);
 
   connection.query(
     `select * from login where username = '${username}' and pass_word = '${password}';`,
     (err, rows, fields) => {
       if (!err) {
         if (rows.length > 0) {
-          console.log(rows[0].a_id);
+          // console.log(rows[0].a_id);
           req.session.user = username;
           req.session.agentId = rows[0].a_id;
-          console.log(req.session);
+          // console.log(req.session);
 
           res.redirect("/agent");
         } else {
@@ -40,7 +40,7 @@ exports.getAgenthome = (req, res) => {
   let agentId = req.session.agentId;
   let propertyDetails;
   let property_sold_rented;
-  console.log("session", req.session);
+  // console.log("session", req.session);
   if(!req.session.agentId){
     res.redirect('/agent/login');
   }
@@ -89,8 +89,8 @@ exports.postAddProperty = (req,res) => {
     asked_price = +asked_price;
     owner_id = +owner_id;
     agentId = +agentId;
-    console.log('working')
-    console.log(req.body)
+    // console.log('working')
+    // console.log(req.body)
     console.log('status',status,type)
     console.log(propertyId)
      const query = `insert into property (p_id , area , bhk ,asked_price , locality ,city , rent_sell ,current_status , owner_id , a_id , price ) values

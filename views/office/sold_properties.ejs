@@ -21,7 +21,7 @@
 <body>
 
     <div class="data">
-        <div class="circle"> 4563 </div>
+        <div class="circle"> <%=counts[0].total_count %> </div>
         <div class="ornament">		
 	<h2><span></span>Total Sold Properties</h2>
     </div>
@@ -45,33 +45,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Cell 1</td>
-                    <td>Cell 2</td>
-                    <td>Cell 3</td>
-                    <td>Cell 4</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                </tr>
-                <tr>
-                    <td>Cell 1</td>
-                    <td>Cell 2</td>
-                    <td>Cell 3</td>
-                    <td>Cell 4</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                </tr>
-               
+                <% for(let sold of soldDetails) { %> 
+                    <tr>
+                        <td><%=sold.p_id %> </td>
+                        <td><%=sold.area %> </td>
+                        <td><%=sold.bhk %> </td>
+                        <td><%=sold.price %> </td>
+                        <td><%=sold.asked_price %> </td>
+                        <td><%=sold.locality %> </td>
+                        <td><%=sold.city %> </td>
+                        <td><%=sold.rent_sell %> </td>
+                        <td><%=sold.current_status %> </td>
+                        <td><%=sold.owner_id %> </td>
+                        <td><%=sold.a_id %> </td>
+                       
+                    </tr>
+                    <% } %>
             </tbody>
         </table>
     </div>

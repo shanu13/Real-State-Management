@@ -10,7 +10,7 @@
 <body>
 
     <div class="data">
-        <div class="circle"> 4563 </div>
+        <div class="circle"> <%= countp[0].total_count %>  </div>
         <div class="ornament">		
 	<h2><span></span>Total Properties</h2>
     </div>
@@ -34,32 +34,23 @@
                 </tr>
             </thead>
             <tbody>
+                <% for(let property of pDetails) { %> 
                 <tr>
-                    <td>Cell 1</td>
-                    <td>Cell 2</td>
-                    <td>Cell 3</td>
-                    <td>Cell 4</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
+                    <td><%=property.p_id %> </td>
+                    <td><%=property.area %> </td>
+                    <td><%=property.bhk %> </td>
+                    <td><%=property.price %> </td>
+                    <td><%=property.asked_price %> </td>
+                    <td><%=property.locality %> </td>
+                    <td><%=property.city %> </td>
+                    <td><%=property.rent_sell %> </td>
+                    <td><%=property.current_status %> </td>
+                    <td><%=property.owner_id %> </td>
+                    <td><%=property.a_id %> </td>
+                   
                 </tr>
-                <tr>
-                    <td>Cell 1</td>
-                    <td>Cell 2</td>
-                    <td>Cell 3</td>
-                    <td>Cell 4</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                </tr>
+                <% } %> 
+              
                
             </tbody>
         </table>

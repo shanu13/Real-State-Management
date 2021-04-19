@@ -42,13 +42,19 @@ exports.getOfficeHome = (req,res) => {
         return;
     }
 
-    const query1 = 'select a_id,firstname,lastname from agent;'
+    const query1 = `select a_id,firstname,lastname from agent; select count(p_id) total_count from property; select count(trans_id) total_count from buyers_history; select count(p_id) total_count from property where current_status = 'rented';`
     connection.query(query1,(err,rows,fields) => {
-        const agents = rows;
-        console.log('rows',rows);
+        const agents = rows[0];
+        const countp = rows[1];
+        const counts = rows[2];
+        const countr = rows[3]
+        // console.log('rows',rows);
         
             res.render('office/officeHome',{
-                agentdata : agents
+                agentdata : agents,
+                countp : countp,
+                counts : counts,
+                countr : countr
             })
     });
 }
@@ -160,7 +166,7 @@ exports.postAddProperty = (req, res) => {
       console.log(err);
     }
   })
-  console.log(req.body);
+  // console.log(req.body);
 
 }
 
@@ -169,15 +175,35 @@ exports.getTotalProperties = (req, res) => {
     res.redirect('/office/login');
     return
   }
-  res.render('office/total_properties')
-}
+  const query = `select count(p_id) total_count from property; select * from property;`
+  connection.query(query,(err,rows,fields) => {
+    const countp = rows[0];
+    const pdetails = rows[1];
+    res.render('office/total_properties',{
+      countp : countp,
+      pDetails : pdetails
+    })
+  })
   
+}
+
 exports.getTotalSoldProperties = (req, res) => {
   if(!req.session.officeId){
     res.redirect('/office/login');
     return
   }
-  res.render('office/sold_properties')
+
+  const query = `select count(trans_id) total_count from buyers_history; select * from property where current_status = 'sold';`
+  connection.query(query,(err,rows,fields) => {
+    const counts =  rows[0];
+    const soldDetails  = rows[1];
+    res.render('office/sold_properties',{
+      counts : counts,
+      soldDetails : soldDetails
+    })
+
+  })
+ 
 }
 
 exports.getTotalRentedProperties = (req, res) => {
@@ -185,5 +211,14 @@ exports.getTotalRentedProperties = (req, res) => {
     res.redirect('/office/login');
     return
   }
-  res.render('office/rented_properties')
+  const query = `select count(p_id) total_count from property where current_status = 'rented'; select * from property where current_status = 'rented';`
+  connection.query(query,(err,rows,fields) => {
+    const rentedp = rows[0];
+    const rentedDetails = rows[1]
+    res.render('office/rented_properties',{
+      rentedp : rentedp,
+      rentedDetails : rentedDetails
+    })
+  })
+ 
 }

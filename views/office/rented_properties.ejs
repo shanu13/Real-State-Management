@@ -30,7 +30,7 @@
 <body>
 
     <div class="data">
-        <div class="circle"> 4563 </div>
+        <div class="circle"> <%=rentedp[0].total_count %> </div>
         <div class="ornament">		
 	<h2><span></span>Total Rented Properties</h2>
     </div>
@@ -54,32 +54,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Cell 1</td>
-                    <td>Cell 2</td>
-                    <td>Cell 3</td>
-                    <td>Cell 4</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                </tr>
-                <tr>
-                    <td>Cell 1</td>
-                    <td>Cell 2</td>
-                    <td>Cell 3</td>
-                    <td>Cell 4</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                    <td>Cell 5</td>
-                </tr>
+                <% for(let rented of rentedDetails) { %> 
+                    <tr>
+                        <td><%=rented.p_id %> </td>
+                        <td><%=rented.area %> </td>
+                        <td><%=rented.bhk %> </td>
+                        <td><%=rented.price %> </td>
+                        <td><%=rented.asked_price %> </td>
+                        <td><%=rented.locality %> </td>
+                        <td><%=rented.city %> </td>
+                        <td><%=rented.rent_sell %> </td>
+                        <td><%=rented.current_status %> </td>
+                        <td><%=rented.owner_id %> </td>
+                        <td><%=rented.a_id %> </td>
+                       
+                    </tr>
+                    <% } %>
                
             </tbody>
         </table>
