@@ -34,6 +34,12 @@ app.get('/', (req,res) => {
     res.render('home')
 })
 
+app.get('/logout',(req,res)=>{
+    req.session.destroy((err)=>{
+        res.redirect('/');
+    })
+})
+
 app.listen(3000,() => {
     console.log('server connected')
 })

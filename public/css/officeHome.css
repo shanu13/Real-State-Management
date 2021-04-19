@@ -10,6 +10,22 @@ body {
   background: url('../img/officehome.png');
 }
 
+.logout{
+ 
+  display : flex;
+  margin: 10px;
+  justify-content: flex-end;
+ 
+  
+}
+.logout a button{
+  font-size: 20px;
+  padding: 12px 50px;
+  background-color: #0dcaf0;
+  border-radius: 15px;
+  border-color: white;
+}
+
 .agent_data {
   margin-bottom:  80px;
 }
