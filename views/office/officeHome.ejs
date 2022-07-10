@@ -8,12 +8,15 @@
     <title>Office</title>
 </head>
 <body>
+
+  <!-- logout button -->
    <div class="logout">
      <a href="/logout"> <button>
       Logout 
      </button> </a>
    </div>
    
+   <!-- details of all agent in office  -->
     <div class="agent_data">
         <table>
             <caption>Agent Information</caption>
@@ -29,6 +32,9 @@
               <tr>
                 <th scope="row"><%= agent.a_id %></th>
                 <td><%= agent.firstname %> <%= agent.lastname %></td>
+
+                <!-- view profile link of each agent -->
+                <!-- redirect to office/profile route  -->
                 <td><a href="/office/profile/<%= agent.a_id %>">View Profile</a></td>
               </tr>
               <% } %>
@@ -37,6 +43,8 @@
           </table>
     </div>
 
+
+    <!-- to add a new agent -->
     <div class="add_agent">
 
       <a href="/office/add_agent">
@@ -48,6 +56,7 @@
       
 
 
+      <!-- to add a new property -->
      <a href="/office/add_property">
       <button class="btn btn--changeGradient">
         Add Property</button>
@@ -57,9 +66,8 @@
 
     
 
+    <!-- display all properties-->
     <div class="total">
-
-  
       <a  href="/office/total_properties">
         <button class="total_properties">
          Total Properties
@@ -68,7 +76,7 @@
       </a>
        
     
-
+      <!-- display all sold_properties -->
       <a href="/office/total_sold_properties">
       <button class="sold_properties" > 
          Total Sold Properties
@@ -77,7 +85,7 @@
       </a>
     
 
-    
+      <!-- display all rented_properties -->
       <a href="/office/total_rented_properties">
         <button class="rented_properties"> 
           Total Rented Properties 

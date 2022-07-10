@@ -27,23 +27,33 @@
     }   
 </style>
 <body>
+
+    <!-- profile page of that agent -->
     <div class="card">
+
+        <!-- displays basic details about that agent-->
         <header>    
           <img src='/img/agent.png' alt=''>
           <p class="face__name"><%= profile[0].firstname %> <%= profile[0].lastname %> </p>
           <h4> Agent Id  :  <%= profile[0].a_id %></h4>
           <h5>Contact  <%= profile[0].contact %></h5>
         </header>
+        
+        <!-- this will show 3 different buttons of different types of properties -->
         <div class="card_body">
           <ul class="social">
+            
+            <!-- total  -->
             <li class="twitter">
                <button onclick="toggleProperties()"><h3><%= cproperty[0].total_count %></h3></button>
               <p>Total Properties</p>
             </li>   
+            
             <li class="facebook">
               <button onclick="toggleSold()"><h3><%= csold[0].total_count %></h3> </button>
               <p>Properties Sold</p>
             </li>
+            
             <li class="instagram">
                <button onclick="toggleRented()"><h3><%= crented[0].total_count %></h3></button>
               <p>Properties Rented</p>
@@ -116,8 +126,9 @@
             <thead>
               <tr>
                 <th>Property ID</th>
-                <th>BHK</th>
                 <th>AREA</th>
+                <th>BHK</th>
+                
                 <th>PRICE</th>
                 <th>ASKED PRICE</th>
                 <th>LOCALITY</th>
@@ -164,8 +175,9 @@
             <thead>
               <tr>
                 <th>Property ID</th>
-                <th>BHK</th>
                 <th>AREA</th>
+                <th>BHK</th>
+                
                 <th>PRICE</th>
                 <th>ASKED PRICE</th>
                 <th>LOCALITY</th>
@@ -199,26 +211,34 @@
         </div>  
     </div>
       </section>
-    
+      
+
+      <!-- javascript part of different properties button -->
+      <!-- function to handle toggle event when clicked on total_properties button -->
       <script>
           function toggleProperties(){
               const properties = document.querySelector('#properties');
               const sold = document.querySelector('#sold');
               const rented = document.querySelector('#rented');
               console.log(properties,sold,rented)
+              
+              //toggle button
               if (properties.style.display === "none" || properties.style.display === "") {
                   console.log('properties')
                 properties.style.display = "block";
-                
                 sold.style.display = "none";
                 rented.style.display = "none";
 
-            } else {
+            } 
+            else {
+                //revert it back
                  properties.style.display = "none";
                 
                 }
           }
 
+          
+          //<!-- function to handle toggle event when clicked on Sold_properties button -->
           function toggleSold(){
             const properties = document.querySelector('#properties');
               const sold = document.querySelector('#sold');
@@ -235,6 +255,7 @@
                 }
           }
 
+          //<!-- function to handle toggle event when clicked on rented_properties button -->
           function toggleRented() {
             const properties = document.querySelector('#properties');
               const sold = document.querySelector('#sold');

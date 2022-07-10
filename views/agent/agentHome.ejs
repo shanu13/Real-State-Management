@@ -20,11 +20,13 @@
   </head>
   <body>
 
+      <!--logout button  -->
     <div class="logout">
      <a href="/logout"> <button>
        Logout 
      </button> </a>
    </div>
+
 
     <!-- agent info -->
     <div class="agent">
@@ -63,8 +65,9 @@
           </div>
         </div>
 
-        <!-- // add property -->
 
+        <!-- add property -->
+        <!-- this will redirect to /agent/add_property route-->
         <div class="add_property ">
           <a href="/agent/add_property/<%= info[0].a_id %>">
             <div class="card">
@@ -83,6 +86,9 @@
      
 
       <hr />
+
+
+
 
       <!-- property details -->
 
@@ -116,12 +122,15 @@
               <td><%= property.current_status %></td>
               <td><%= property.owner_id %></td>
               <td><%= property.a_id %></td>
+
+              <!-- it will redirect to agent/update route  when user click on update-->
               <td><form action="/agent/update/<%= property.p_id %>" method="POST">
                   <select class="" id="status" name="status">
                     <% if(property.rent_sell == 'sell') { %> 
                         <option name="available_for_sell" value="available_for_sell" <%= property.current_status == 'available_for_sell' ? 'selected' : '' %>>Available for Sell</option>
                         <option name="sold" value="sold"  <%= property.current_status == 'sold' ? 'selected' : '' %>>Sold</option>
-                    <% } else if( property.rent_sell == 'rent') { %> 
+                    <% } 
+                    else if( property.rent_sell == 'rent') { %> 
                         <option name="available_for_rent" value="available_for_rent" <%= property.current_status == 'available_for_rent' ? 'selected' : '' %>>Available for Rent</option>
                         <option name="rented" value="rented" <%= property.current_status == 'rented' ? 'selected' : '' %>>Rented</option>
                         <% } %> 
@@ -138,6 +147,9 @@
       </div>
 
 <hr>/
+
+
+
        <!-- property sold/rented -->
       <div class="property_sold_rented">
         <h1>Property Sold/Rented</h1>
@@ -165,7 +177,7 @@
         </table>
       </div>
 
-      <!-- available Properties -->
+      
     </div>
   </body>
 </html>
